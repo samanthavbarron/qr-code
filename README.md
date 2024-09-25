@@ -6,6 +6,14 @@ This project generates domains randomly and scores their corresponding QR codes 
 
 Also see the [related api](https://github.com/samanthavbarron/api) that you can use to update what the QR code redirects to (e.g. from iOS shortcuts, etc).
 
+# Usage
+
+```bash
+pip install .
+python qr_code.py
+# images will be placed into `images/` directory
+```
+
 # Distribution of Scores
 ![scores](sample_dist.png)
 
