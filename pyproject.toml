@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qr-code-tattoo"
+version = "0.1.0"
+
+dependencies = [
+    "qrcode==7.4.2",
+    "pypng==0.20220715.0",
+    "tqdm",
+    "seaborn",
+    "pandas",
+    "scipy",
+    "numpy",
+]

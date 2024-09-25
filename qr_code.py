@@ -10,19 +10,16 @@ import random, string
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# https://github.com/jomo/tld_checker/blob/master/tld_checker.sh
-# http://qrcode.meetheed.com/question14.php?s=s
-
 # Args
 parallel = True
-num_procs = 30
-num_extremal = 200
+num_procs = 2
+num_extremal = 2
 
 random_case = False
 include_slash = True
 include_numbers = True
 
-num_random_urls = 10**6
+num_random_urls = 100
 num_chars = 5
 tld = None
 random_tlds = ["io", "ai", "me"]
@@ -34,10 +31,8 @@ s_boundaries_w = -0.0
 s_corners_w = -0.01
 s_crosses_w = -0.01
 
-##
-
 shift_adjc = [(0,1),(1,0),(1,1)]
-def score_diffs(x: np.ndarray) -> float:
+def score_diffs(x: np.ndarray) -> np.float64:
     res = np.zeros(x.shape)
 
     for shift in shift_adjc:
@@ -83,9 +78,9 @@ def count_same_neighbors(x: np.ndarray) -> int:
     return res.sum()
 
 def score_url(url:str, img_file = None):
-    qr = qrcode.QRCode(
+    qr = qrcode.QRCode( # type: ignore
         version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_Q,
+        error_correction=qrcode.constants.ERROR_CORRECT_Q, # type: ignore
         box_size=10,
         border=4,
     )
@@ -102,7 +97,7 @@ def score_url(url:str, img_file = None):
     return {
         "url": url,
         "tld": tld,
-        "s_contiguous_blocks": label(mat)[1],
+        "s_contiguous_blocks": label(mat)[1], # type: ignore
         "s_contiguous_blocks_w": s_contiguous_blocks_w,
         "s_neighbors": count_same_neighbors(mat),
         "s_neighbors_w": s_neighbors_w,
