@@ -11,7 +11,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Args
-parallel = True
+parallel = False
 num_procs = 2
 num_extremal = 2
 
@@ -19,7 +19,7 @@ random_case = False
 include_slash = True
 include_numbers = True
 
-num_random_urls = 100
+num_random_urls = 10000
 num_chars = 5
 tld = None
 random_tlds = ["io", "ai", "me"]
